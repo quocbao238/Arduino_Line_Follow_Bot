@@ -1,2 +1,10 @@
 # Arduino_Line_Follow_Bot
-Robot Follow Line with Arduino
+
+Creator: QuocBao
+Simple Robot Follow Line Source Code 
+     + Vietduino-Uno
+
+     + L298
+
+     + Simple Line Sensor
+
