@@ -1,10 +1,9 @@
 /*
-    Creator: QuocBao
-    Robot Follow Line Source Code 
+    MakerLab.vn
+    Robot Follow Line 
       + Vietduino-Uno
       + L298
       + Simple Line Sensor
-
 */
 
 
@@ -23,13 +22,24 @@ void setup()
 
 void loop()
 {
-  // goL();
-  //  goFR();
+ /*
+  * Lưu ý : Các bạn sẽ test thử xem Động cơ đã chạy đúng chưa
+  * Nếu động cơ bị ngược các bạn đảo dây động cơ hoặc đổi bên L928 
+  * trong trường hợp FR và FL cho đến khi chạy đúng
+  * Các bạn nên test lần lượt theo thứ tự dưới rồi mới chạy Run();
+  * Bỏ dấu // để test chức năng và tắt chức năng sau khi test
+  * Ví dụ  //goFF();    sau khi đã test xong hàm goFF
+  */
 
-  // Serial.println("Left sensor = " + String(analogRead(Sensor_Left)) +
-  //                "  Right sensor = " + String(analogRead(Sensor_Right)));
+//  goFF(); // Hai động cơ chạy thuận
+//  goR();  // Động cơ trái chạy thuận , động cơ phải chạy nghịch
+//  goL();  // Động cơ trái chạy nghịch , động cơ phải chạy thuận
+//  goFR(); // Động cơ trái chạy , động cơ phải đứng yên
+//  goFL(); // Động cơ trái đứng yên , động cơ phải chạy
+
+  /* Chạy hàm này sau khi test thành công */
   Run();
-  // delay(50);
+
 }
 
 void pinModes()
@@ -98,24 +108,24 @@ void ReadSensor()
   }
   else
   {
-    if (analogRead(Sensor_Right) >= 600 && analogRead(Sensor_Left) >= 600)
-    {
-      // goFF();
+    if (analogRead(Sensor_Right) >= 500 && analogRead(Sensor_Left) >= 500)
+    { 
+      // O giua
       value = 1500;
     }
     else
     {
-      if (analogRead(Sensor_Right) <= 300 && analogRead(Sensor_Left) >= 600)
+      if (analogRead(Sensor_Right) <= 300 && analogRead(Sensor_Left) >= 500)
       {
-        // goFL();
+        //phia ben phai
         value = 0;
         lastvalue = 0;
       }
       else
       {
-        if (analogRead(Sensor_Right) >= 600 && analogRead(Sensor_Left) <= 300)
+        if (analogRead(Sensor_Right) >= 500 && analogRead(Sensor_Left) <= 300)
         {
-          // goFR();
+          // phia ben trai
           value = 3000;
           lastvalue = 3000;
         }
